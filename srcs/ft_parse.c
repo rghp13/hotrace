@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:09:30 by vrigaudy          #+#    #+#             */
-/*   Updated: 2021/12/11 18:04:08 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:26:29 by vrigaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_data	*ft_parse(int *flag)
 	data = ft_malloc(flag);
 	if (!data)
 		return (NULL);
+	data->next = NULL;
 	ret = ft_datacheck_key(ptr, flag, data);
 	if (ret == -1 || ret == 1)
 		return (NULL);
