@@ -2,6 +2,7 @@
 
 int main(void)
 {
-	printf("Hello World!\n");
+	t_data **data;
+
 	return (0);
 }

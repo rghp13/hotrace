@@ -9,7 +9,7 @@ export HEADER
 
 PATH_SRC					=	./srcs
 PATH_HEAD					=	./includes
-SRC_NAME					=	main.c
+SRC_NAME					=	main.c gnl.c utils.c
 
 NAME						=	hotrace
 OBJ_NAME					=	$(SRC_NAME:.c=.o)
