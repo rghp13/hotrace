@@ -4,6 +4,7 @@ int	main(void)
 {
 	t_data	*arr[TABLESIZE];
 
+	init_table(arr);
 	if (parse_stdin(arr) == 1)
 	{
 		free_everything(arr);
@@ -12,6 +13,19 @@ int	main(void)
 	process_requests(arr);
 	free_everything(arr);
 	return (0);
+}
+
+void	init_table(t_data **arr)
+{
+	int i;
+
+	i = 0;
+	while (i < TABLESIZE)
+	{
+		arr[i] = NULL;
+		i++;
+	}
+	return ;
 }
 
 int	parse_stdin(t_data **arr)
@@ -27,7 +41,11 @@ int	parse_stdin(t_data **arr)
 		if (flag == 1)
 			break ;
 		if (flag == -1)
+		{
+			if (ptr)
+				free(ptr);
 			return (1);
+		}
 		i = hash(ptr->key);
 		if (i < 0)
 			return (1);

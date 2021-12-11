@@ -6,6 +6,7 @@ int	process_requests(t_data **arr)
 	int		i;
 	char	*ptr;
 
+	flag = 0;
 	while (1)
 	{
 		ptr = ft_process(&flag);

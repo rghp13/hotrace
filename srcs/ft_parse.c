@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:09:30 by vrigaudy          #+#    #+#             */
-/*   Updated: 2021/12/11 18:26:29 by vrigaudy         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:30:13 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,18 @@ t_data	*ft_parse(int *flag)
 	ret = ft_datacheck_value(ptr, flag, data);
 	data->value = ptr;
 	return (data);
+}
+
+char	*ft_parse(int *flag)
+{
+	int		ret;
+	char	*ptr;
+
+	ret = get_next_line(2, &ptr, 0);
+	if (ret == -1)
+	{
+		*flag = -1;
+		return (NULL);
+	}
+	return (ptr);
 }
