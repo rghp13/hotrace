@@ -23,7 +23,7 @@ int	parse_stdin(t_data **arr)
 	flag = 0;
 	while (1)
 	{
-		ptr = ft_parse(&flag);
+		ptr = ft_parse(&flag);//if -1 might need to free ptr
 		if (flag == 1)
 			break ;
 		if (flag == -1)
