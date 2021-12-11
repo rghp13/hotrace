@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:37:07 by rponsonn          #+#    #+#             */
-/*   Updated: 2021/12/11 13:28:46 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/11 14:01:42 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ static char	*ft_staticclean(char **ptr)
 	*ptr = NULL;
 	return (ret);
 }
+
+/*
+**-1 if error, if i'm at end of file return 0, if there's more return 1
+*/
 
 int	get_next_line(int fd, char **line, int ret)
 {
