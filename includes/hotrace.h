@@ -4,7 +4,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
-# define TABLESIZE 12
+# define TABLESIZE 1024
 # define ERROR "ERROR : INVALID VALUE\n"
 # define GNL_BUFFER_SIZE 32
 
@@ -23,5 +23,7 @@ char	*ft_strdup(const char *s1);
 char	*ft_gnl_strjoin(char **s1, const char *s2);
 int		ft_loop(char **ptr, int *ret, int *fd, char *data);
 int		ft_im_out_of_lines(char **line, int output);
+void	add_last(t_data *head, t_data *new);
+int		hash(const char *str);
 
 #endif
