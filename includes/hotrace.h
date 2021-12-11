@@ -15,15 +15,17 @@ typedef struct s_data
 	struct s_data	*next;
 }					t_data;
 
+int		parse_stdin(t_data **arr);
 int		get_next_line(int fd, char **line, int ret);
+int		hash(const char *str);
+int		process_requests(t_data **arr);
+void	ft_search_list(t_data *data, char *key_check);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	*ft_strdup(const char *s1);
 char	*ft_gnl_strjoin(char **s1, const char *s2);
-int		ft_loop(char **ptr, int *ret, int *fd, char *data);
-int		ft_im_out_of_lines(char **line, int output);
-void	add_last(t_data *head, t_data *new);
-int		hash(const char *str);
+void	addlast(t_data *head, t_data *new);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:37:07 by rponsonn          #+#    #+#             */
-/*   Updated: 2021/12/11 14:01:42 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:04:43 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,35 @@ static char	*ft_staticclean(char **ptr)
 	return (ret);
 }
 
+static int	ft_im_out_of_lines(char **line, int output)
+{
+	if (*line == NULL)
+		return (-1);
+	else
+		return (output);
+}
+
+/*
+**Had to remove
+**while ((ft_fnext(ptr) < 0) && ((ret = read(fd, data, GNL_BUFFER_SIZE)) > 0))
+*/
+
+static int	ft_loop(char **ptr, int *ret, int *fd, char *data)
+{
+	while (ft_fnext(*ptr) < 0)
+	{
+		*ret = read(*fd, data, GNL_BUFFER_SIZE);
+		if (*ret > 0)
+		{
+			data[*ret] = '\0';
+			*ptr = ft_gnl_strjoin(ptr, data);
+		}
+		if (*ret == 0)
+			return (0);
+	}
+	return (0);
+}
+
 /*
 **-1 if error, if i'm at end of file return 0, if there's more return 1
 */
@@ -71,32 +100,4 @@ int	get_next_line(int fd, char **line, int ret)
 	*line = ft_strdup(ptr);
 	free(ptr);
 	return (ft_im_out_of_lines(line, 0));
-}
-
-int	ft_im_out_of_lines(char **line, int output)
-{
-	if (*line == NULL)
-		return (-1);
-	else
-		return (output);
-}
-/*
-**Had to remove
-**while ((ft_fnext(ptr) < 0) && ((ret = read(fd, data, GNL_BUFFER_SIZE)) > 0))
-*/
-
-int	ft_loop(char **ptr, int *ret, int *fd, char *data)
-{
-	while (ft_fnext(*ptr) < 0)
-	{
-		*ret = read(*fd, data, GNL_BUFFER_SIZE);
-		if (*ret > 0)
-		{
-			data[*ret] = '\0';
-			*ptr = ft_gnl_strjoin(ptr, data);
-		}
-		if (*ret == 0)
-			return (0);
-	}
-	return (0);
 }

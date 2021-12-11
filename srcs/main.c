@@ -7,6 +7,7 @@ int	main(void)
 	if (parse_stdin(arr) == 1)
 	{
 		free_everything(arr);
+		return (1);
 	}
 	process_requests(arr);
 	free_everything(arr);
@@ -20,7 +21,7 @@ int	parse_stdin(t_data **arr)
 	int		i;
 
 	flag = 0;
-	while (flag == 0)
+	while (1)
 	{
 		ptr = ft_parse(&flag);
 		if (flag == 1)
