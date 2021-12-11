@@ -27,5 +27,16 @@ char	*ft_strdup(const char *s1);
 char	*ft_gnl_strjoin(char **s1, const char *s2);
 void	addlast(t_data *head, t_data *new);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	init_table(t_data **arr);
+void	free_everything(t_data **arr);
+void	free_list(t_data *data);
+t_data	*ft_parse(int *flag);
+void	add_last(t_data *head, t_data *new);
+t_data	*ft_malloc(int *flag);
+int		ft_datacheck_key(char **ptr, int *flag, t_data *data);
+int		ft_datacheck_value(char **ptr, int *flag, t_data *data);
+char	*ft_process(int *flag);
+void	ft_putstr(const char *str);
+void	ft_print_value(const char *str);
 
 #endif

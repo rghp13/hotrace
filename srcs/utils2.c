@@ -1,6 +1,6 @@
 #include "hotrace.h"
 
-void	addlast(t_data *head, t_data *new)
+void	add_last(t_data *head, t_data *new)
 {
 	t_data	*ptr;
 

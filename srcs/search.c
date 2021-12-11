@@ -18,7 +18,10 @@ int	process_requests(t_data **arr)
 		if (i == -1)
 			return (-1);
 		if (arr[i] == NULL)
-			return (ft_putstr(ERROR));
+		{
+			ft_putstr(ERROR);
+			return (1);
+		}
 		ft_search_list(arr[i], ptr);//find and print otherwise print error message
 	}
 }
@@ -34,7 +37,7 @@ void	ft_search_list(t_data *data, char *key_check)
 	while (ptr != NULL)
 	{
 		if (ft_strncmp(data->key, key_check, len) == 0 && len == \
-		ft_strlen(data->key))
+		(int)ft_strlen(data->key))
 		{
 			ft_print_value(data->value);
 			flag = 1;
