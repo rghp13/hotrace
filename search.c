@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 19:26:45 by rponsonn          #+#    #+#             */
-/*   Updated: 2021/12/12 21:28:35 by vrigaudy         ###   ########.fr       */
+/*   Updated: 2021/12/12 21:52:53 by vrigaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_search_list(t_data *data, char *key_check)
 	int		flag;
 	int		len;
 
+	flag = 0;
 	len = ft_strlen(key_check);
 	ptr = data;
 	while (ptr != NULL)
