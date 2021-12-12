@@ -5,7 +5,7 @@
 # include <string.h>
 # include <stdio.h>
 # define TABLESIZE 1024
-# define ERROR "ERROR : INVALID VALUE\n"
+# define ERROR ": Not found.\n"
 # define GNL_BUFFER_SIZE 32
 
 typedef struct s_data

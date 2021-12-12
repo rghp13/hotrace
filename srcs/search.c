@@ -19,10 +19,11 @@ int	process_requests(t_data **arr)
 			return (-1);
 		if (arr[i] == NULL)
 		{
+			ft_putstr(ptr);
 			ft_putstr(ERROR);
-			return (1);
 		}
-		ft_search_list(arr[i], ptr);//find and print otherwise print error message
+		ft_search_list(arr[i], ptr);
+		free(ptr);
 	}
 }
 
@@ -36,14 +37,17 @@ void	ft_search_list(t_data *data, char *key_check)
 	ptr = data;
 	while (ptr != NULL)
 	{
-		if (ft_strncmp(data->key, key_check, len) == 0 && len == \
-		(int)ft_strlen(data->key))
+		if (ft_strncmp(ptr->key, key_check, len) == 0 && len == \
+		(int)ft_strlen(ptr->key))
 		{
-			ft_print_value(data->value);
+			ft_print_value(ptr->value);
 			flag = 1;
 		}
 		ptr = ptr->next;
 	}
 	if (flag == 0)
+	{
+		ft_putstr(key_check);
 		ft_putstr(ERROR);
+	}
 }

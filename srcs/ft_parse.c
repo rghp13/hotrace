@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:09:30 by vrigaudy          #+#    #+#             */
-/*   Updated: 2021/12/11 18:39:18 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 11:41:45 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,14 @@ int	ft_datacheck_key(char **ptr, int *flag, t_data *data)
 
 	ret = get_next_line(2, ptr, 0);
 	if (ret == -1)//gnl_error
+	{
 		*flag = -1;//critical error flag
+		return (-1);
+	}
 	if (ft_strlen(*ptr) == 0)//empty line, free unneeded stuff
 	{
-		free(ptr);
+		printf("reached correct area for empty line\n");
+		//free(ptr);
 		free(data);
 		*flag = 1;//let main know to move to next section
 		if (ret == 0)//edge case for EOF
@@ -90,6 +94,11 @@ char	*ft_process(int *flag)
 	if (ret == -1)
 	{
 		*flag = -1;
+		return (NULL);
+	}
+	if (ret == 0 && ft_strlen(ptr) == 0)
+	{
+		*flag = 1;
 		return (NULL);
 	}
 	return (ptr);

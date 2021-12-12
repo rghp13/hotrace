@@ -14,25 +14,22 @@ void	free_everything(t_data **arr)
 	return ;
 }
 
+/*
+**error exists in how struct is assigned next pointer
+*/
+
 void	free_list(t_data *data)
 {
 	t_data	*next;
 	t_data	*current;
 
-	if (data->next == NULL)
-	{
-		free(data->key);
-		free(data->value);
-		free(data);
-		return ;
-	}
 	current = data;
-	while (current)
+	while (current != NULL)
 	{
 		next = current->next;
-		free(data->key);
-		free(data->value);
-		free(data);
+		free(current->key);
+		free(current->value);
+		free(current);
 		current = next;
 	}
 	return ;
