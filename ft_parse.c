@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:09:30 by vrigaudy          #+#    #+#             */
-/*   Updated: 2021/12/12 14:02:43 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 15:35:10 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,20 @@ int	ft_datacheck_value(char **ptr, int *flag, t_data *data)
 
 t_data	*ft_parse(int *flag)
 {
-	int		i;
 	int		ret;
 	char	*ptr;
 	t_data	*data;
 
-	i = 0;
 	data = ft_malloc(flag);
 	if (!data)
 		return (NULL);
 	data->next = NULL;
 	ret = ft_datacheck_key(&ptr, flag, data);
 	if (ret == -1 || ret == 1)
+	{
+		free(ptr);
 		return (NULL);
+	}
 	data->key = ptr;
 	ret = ft_datacheck_value(&ptr, flag, data);
 	data->value = ptr;

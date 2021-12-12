@@ -1,18 +1,9 @@
 #include "hotrace.h"
 
-void	add_last(t_data *head, t_data *new)
+void	add_first(t_data **head, t_data *new)
 {
-	t_data	*ptr;
-
-	ptr = head;
-	if (head->next == NULL)
-	{
-		head->next = new;
-		return ;
-	}
-	while (ptr->next != NULL)
-		ptr = ptr->next;
-	ptr->next = new;
+	new->next = *head;
+	*head = new;
 	return ;
 }
 
@@ -49,4 +40,12 @@ void	ft_print_value(const char *str)
 {
 	write(STDOUT_FILENO, str, ft_strlen(str));
 	write(1, "\n", 1);
+}
+
+int64_t	get_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }

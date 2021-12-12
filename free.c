@@ -22,7 +22,9 @@ void	free_list(t_data *data)
 {
 	t_data	*next;
 	t_data	*current;
+	int		i;
 
+	i = 0;
 	current = data;
 	while (current != NULL)
 	{
@@ -31,6 +33,8 @@ void	free_list(t_data *data)
 		free(current->value);
 		free(current);
 		current = next;
+		i++;
 	}
+	printf("%d\n", i);
 	return ;
 }

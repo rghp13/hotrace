@@ -15,7 +15,7 @@ NAME						=	hotrace
 OBJ_NAME					=	$(SRC_NAME:.c=.o)
 CC							=	gcc
 RM							=	rm -f
-CFLAG						=	-g -Wall -Wextra -Werror -fsanitize=address
+CFLAG						=	-Wall -Wextra -Werror
 SRC							=	$(addprefix $(PATH_SRC)/,$(SRC_NAME))
 OBJ							=	$(addprefix $(PATH_SRC)/,$(OBJ_NAME))
 
