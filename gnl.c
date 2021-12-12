@@ -6,98 +6,74 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:37:07 by rponsonn          #+#    #+#             */
-/*   Updated: 2021/12/11 18:04:38 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:39:40 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
 
-static int	ft_fnext(char *str)
+static char	*ft_realloc(char *line, int *i)
 {
+	int		l;
+	char	*str;
+
+	l = 0;
+	str = malloc(*i * 2);
+	if (str == NULL)
+		return (NULL);
+	*i *= 2;
+	while (line && line[l])
+	{
+		str[l] = line[l];
+		l++;
+	}
+	while (l < *i)
+	{
+		str[l] = 0;
+		l++;
+	}
+	free(line);
+	return (str);
+}
+
+static int	subgnl(char **line, int *malloc_size)
+{
+	int	r;
 	int	i;
 
-	i = 0;
-	if (!str)
-		return (-1);
-	while (str[i])
+	i = -1;
+	r = 0;
+	while (1)
 	{
-		if (str[i] == '\n')
-			return (i);
-		i++;
+		r = read(0, &(*line)[++i], 1);
+		if (r < 1)
+			break ;
+		if ((*line)[i] == 10)
+			break ;
+		if (i == *malloc_size - 2)
+		{
+			*line = ft_realloc(*line, malloc_size);
+			if (*line == NULL)
+				return (-1);
+		}
 	}
-	return (-1);
+	(*line)[i] = 0;
+	return (r);
 }
 
-static char	*ft_staticclean(char **ptr)
+int	get_next_line(char **line)
 {
-	char	*ret;
+	int	r;
+	int	malloc_size;
 
-	if (!ptr || !ptr[0])
-		return (NULL);
-	ret = ft_substr(*ptr, (ft_fnext(*ptr) + 1), ft_strlen(*ptr));
-	free(*ptr);
-	*ptr = NULL;
-	return (ret);
-}
-
-static int	ft_im_out_of_lines(char **line, int output)
-{
+	r = 0;
+	malloc_size = 50;
+	if (!line)
+		return (-1);
+	*line = NULL;
+	*line = ft_realloc(*line, &malloc_size);
 	if (*line == NULL)
 		return (-1);
-	else
-		return (output);
-}
-
-/*
-**Had to remove
-**while ((ft_fnext(ptr) < 0) && ((ret = read(fd, data, GNL_BUFFER_SIZE)) > 0))
-*/
-
-static int	ft_loop(char **ptr, int *ret, int *fd, char *data)
-{
-	while (ft_fnext(*ptr) < 0)
-	{
-		*ret = read(*fd, data, GNL_BUFFER_SIZE);
-		if (*ret > 0)
-		{
-			data[*ret] = '\0';
-			*ptr = ft_gnl_strjoin(ptr, data);
-		}
-		if (*ret == 0)
-			return (0);
-	}
-	return (0);
-}
-
-/*
-**-1 if error, if i'm at end of file return 0, if there's more return 1
-*/
-
-int	get_next_line(int fd, char **line, int ret)
-{
-	char		data[GNL_BUFFER_SIZE + 1];
-	static char	*ptr;
-
-	if (fd < 0 || !line || GNL_BUFFER_SIZE < 1 || read(fd, data, 0) < 0)
-		return (-1);
-	ret = read(fd, data, GNL_BUFFER_SIZE);
-	data[ret] = '\0';
-	ptr = ft_gnl_strjoin(&ptr, data);
-	if (ptr == NULL)
-		return (-1);
-	if (ft_strlen(ptr) == 0)
-	{
-		*line = ptr;
-		return (0);
-	}
-	ft_loop(&ptr, &ret, &fd, data);
-	if ((ft_fnext(ptr)) >= 0)
-	{
-		*line = ft_substr(ptr, 0, ft_fnext(ptr));
-		ptr = ft_staticclean(&ptr);
-		return (ft_im_out_of_lines(line, 1));
-	}
-	*line = ft_strdup(ptr);
-	free(ptr);
-	return (ft_im_out_of_lines(line, 0));
+	r = subgnl(line, &malloc_size);
+	return (r);
 }

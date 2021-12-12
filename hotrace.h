@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 19:26:35 by rponsonn          #+#    #+#             */
-/*   Updated: 2021/12/12 19:31:20 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:33:50 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # define TABLESIZE 3021377
 # define ERROR ": Not found.\n"
-# define GNL_BUFFER_SIZE 10000
+# define GNL_BUFFER_SIZE 64
 
 typedef struct s_data
 {
@@ -28,7 +28,7 @@ typedef struct s_data
 }					t_data;
 
 int		parse_stdin(t_data **arr);
-int		get_next_line(int fd, char **line, int ret);
+int		get_next_line(char **line);
 int		hash(const char *str);
 int		process_requests(t_data **arr);
 void	ft_search_list(t_data *data, char *key_check);

@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:09:30 by vrigaudy          #+#    #+#             */
-/*   Updated: 2021/12/12 15:35:10 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:34:36 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_datacheck_key(char **ptr, int *flag, t_data *data)
 {
 	int	ret;
 
-	ret = get_next_line(STDIN_FILENO, ptr, 0);
+	ret = get_next_line(ptr);
 	if (ret == -1)
 	{
 		*flag = -1;
@@ -50,7 +50,7 @@ int	ft_datacheck_value(char **ptr, int *flag, t_data *data)
 {
 	int	ret;
 
-	ret = get_next_line(STDIN_FILENO, ptr, 0);
+	ret = get_next_line(ptr);
 	if (ret == -1)
 	{
 		free(data->key);
@@ -89,7 +89,7 @@ char	*ft_process(int *flag)
 	int		ret;
 	char	*ptr;
 
-	ret = get_next_line(STDIN_FILENO, &ptr, 0);
+	ret = get_next_line(&ptr);
 	if (ret == -1)
 	{
 		*flag = -1;
