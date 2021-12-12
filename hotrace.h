@@ -1,14 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hotrace.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/12 19:26:35 by rponsonn          #+#    #+#             */
+/*   Updated: 2021/12/12 19:31:20 by rponsonn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HOTRACE_H
 # define HOTRACE_H
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
-# include <stdint.h>//remove this
-# include <sys/time.h>
-# define TABLESIZE 1000000
+# define TABLESIZE 3021377
 # define ERROR ": Not found.\n"
-# define GNL_BUFFER_SIZE 100
+# define GNL_BUFFER_SIZE 10000
 
 typedef struct s_data
 {
@@ -32,13 +42,13 @@ void	init_table(t_data **arr);
 void	free_everything(t_data **arr);
 void	free_list(t_data *data);
 t_data	*ft_parse(int *flag);
-void	add_first(t_data **head, t_data *new);
+void	add_last(t_data *head, t_data *new);
 t_data	*ft_malloc(int *flag);
 int		ft_datacheck_key(char **ptr, int *flag, t_data *data);
 int		ft_datacheck_value(char **ptr, int *flag, t_data *data);
 char	*ft_process(int *flag);
 void	ft_putstr(const char *str);
 void	ft_print_value(const char *str);
-int64_t	get_time(void);
+int		ft_check_key_val(const char *s1, const char *s2);
 
 #endif

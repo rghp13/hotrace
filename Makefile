@@ -9,7 +9,7 @@ export HEADER
 
 PATH_SRC					=	./
 PATH_HEAD					=	./
-SRC_NAME					=	main.c gnl.c utils.c utils2.c hash.c ft_parse.c search.c free.c
+SRC_NAME					=	main.c gnl.c utils.c utils2.c hash.c ft_parse.c search.c free.c ft_check_key_val.c
 
 NAME						=	hotrace
 OBJ_NAME					=	$(SRC_NAME:.c=.o)

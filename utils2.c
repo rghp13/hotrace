@@ -1,10 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/12 19:25:08 by rponsonn          #+#    #+#             */
+/*   Updated: 2021/12/12 19:27:13 by rponsonn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "hotrace.h"
 
-void	add_first(t_data **head, t_data *new)
+void	add_last(t_data *head, t_data *new)
 {
-	new->next = *head;
-	*head = new;
-	return ;
+	t_data	*ptr;
+
+	if (head->next == NULL)
+	{
+		if (ft_check_key_val(head->key, new->key))
+			free_list(new);
+		else
+			head->next = new;
+		return ;
+	}
+	ptr = head;
+	while (ptr->next != NULL)
+	{
+		if (ft_check_key_val(ptr->key, new->key))
+		{
+			free_list(new);
+			return ;
+		}
+		ptr = ptr->next;
+	}
+	if (ft_check_key_val(ptr->key, new->key))
+		free_list(new);
+	else
+		ptr->next = new;
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -40,12 +73,4 @@ void	ft_print_value(const char *str)
 {
 	write(STDOUT_FILENO, str, ft_strlen(str));
 	write(1, "\n", 1);
-}
-
-int64_t	get_time(void)
-{
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }

@@ -1,21 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/12 19:21:39 by rponsonn          #+#    #+#             */
+/*   Updated: 2021/12/12 19:30:22 by rponsonn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "hotrace.h"
 
 int	main(void)
 {
-	t_data	*arr[TABLESIZE];
-	int64_t time_start;
+	t_data	**arr;
 
-	time_start = get_time();
+	arr = malloc((sizeof(t_data *) * TABLESIZE));
+	if (arr == NULL)
+		return (1);
 	init_table(arr);
 	if (parse_stdin(arr) == 1)
 	{
 		free_everything(arr);
+		free(arr);
 		return (1);
 	}
-	printf("\n%ld\n\n", get_time() - time_start);
 	process_requests(arr);
-	printf("\n%ld\n\n", get_time() - time_start);
 	free_everything(arr);
+	free(arr);
 	return (0);
 }
 
@@ -41,7 +54,7 @@ int	parse_stdin(t_data **arr)
 	flag = 0;
 	while (1)
 	{
-		ptr = ft_parse(&flag);//if -1 might need to free ptr
+		ptr = ft_parse(&flag);
 		if (flag == 1 || flag == -1)
 		{
 			if (ptr)
@@ -56,7 +69,7 @@ int	parse_stdin(t_data **arr)
 		if (arr[i] == NULL)
 			arr[i] = ptr;
 		else
-			add_first(&arr[i], ptr);
+			add_last(arr[i], ptr);
 	}
 	return (0);
 }
