@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:09:30 by vrigaudy          #+#    #+#             */
-/*   Updated: 2021/12/12 11:41:45 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 12:30:44 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_datacheck_key(char **ptr, int *flag, t_data *data)
 {
 	int	ret;
 
-	ret = get_next_line(2, ptr, 0);
+	ret = get_next_line(0, ptr, 0);
 	if (ret == -1)//gnl_error
 	{
 		*flag = -1;//critical error flag
@@ -52,7 +52,7 @@ int	ft_datacheck_value(char **ptr, int *flag, t_data *data)
 {
 	int	ret;
 
-	ret = get_next_line(2, ptr, 0);
+	ret = get_next_line(0, ptr, 0);
 	if (ret == -1)
 	{
 		free(data->key);
@@ -90,7 +90,7 @@ char	*ft_process(int *flag)
 	int		ret;
 	char	*ptr;
 
-	ret = get_next_line(2, &ptr, 0);
+	ret = get_next_line(0, &ptr, 0);
 	if (ret == -1)
 	{
 		*flag = -1;

@@ -7,8 +7,8 @@ define HEADER
 endef
 export HEADER
 
-PATH_SRC					=	./srcs
-PATH_HEAD					=	./includes
+PATH_SRC					=	./
+PATH_HEAD					=	./
 SRC_NAME					=	main.c gnl.c utils.c utils2.c hash.c ft_parse.c search.c free.c
 
 NAME						=	hotrace
