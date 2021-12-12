@@ -42,11 +42,11 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 void	ft_putstr(const char *str)
 {
-	write(1, str, ft_strlen(str));
+	write(STDOUT_FILENO, str, ft_strlen(str));
 }
 
 void	ft_print_value(const char *str)
 {
-	write(1, str, ft_strlen(str));
+	write(STDOUT_FILENO, str, ft_strlen(str));
 	write(1, "\n", 1);
 }

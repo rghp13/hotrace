@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:09:30 by vrigaudy          #+#    #+#             */
-/*   Updated: 2021/12/12 12:33:33 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 14:02:43 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,22 @@ int	ft_datacheck_key(char **ptr, int *flag, t_data *data)
 {
 	int	ret;
 
-	ret = get_next_line(0, ptr, 0);
-	if (ret == -1)//gnl_error
+	ret = get_next_line(STDIN_FILENO, ptr, 0);
+	if (ret == -1)
 	{
-		*flag = -1;//critical error flag
+		*flag = -1;
 		return (-1);
 	}
-	if (ft_strlen(*ptr) == 0)//empty line, free unneeded stuff
+	if (ft_strlen(*ptr) == 0)
 	{
-		printf("reached correct area for empty line\n");
-		//free(ptr);
 		free(data);
-		*flag = 1;//let main know to move to next section
-		if (ret == 0)//edge case for EOF
+		*flag = 1;
+		if (ret == 0)
 		{
 			*flag = -1;
 			return (-1);
 		}
-		return (1);//return value should quit parsing
+		return (1);
 	}
 	return (0);
 }
@@ -52,7 +50,7 @@ int	ft_datacheck_value(char **ptr, int *flag, t_data *data)
 {
 	int	ret;
 
-	ret = get_next_line(0, ptr, 0);
+	ret = get_next_line(STDIN_FILENO, ptr, 0);
 	if (ret == -1)
 	{
 		free(data->key);

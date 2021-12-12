@@ -4,7 +4,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
-# define TABLESIZE 1024
+# define TABLESIZE 10000
 # define ERROR ": Not found.\n"
 # define GNL_BUFFER_SIZE 32
 
