@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 19:26:45 by rponsonn          #+#    #+#             */
-/*   Updated: 2021/12/12 19:26:48 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 21:28:35 by vrigaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ft_search_list(t_data *data, char *key_check)
 		{
 			ft_print_value(ptr->value);
 			flag = 1;
+			return ;
 		}
 		ptr = ptr->next;
 	}
