@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 19:25:32 by rponsonn          #+#    #+#             */
-/*   Updated: 2021/12/12 19:25:52 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 19:36:40 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ void	free_list(t_data *data)
 {
 	t_data	*next;
 	t_data	*current;
-	int		i;
 
-	i = 0;
 	current = data;
 	while (current != NULL)
 	{
@@ -45,8 +43,6 @@ void	free_list(t_data *data)
 		free(current->value);
 		free(current);
 		current = next;
-		i++;
 	}
-	printf("%d\n", i);
 	return ;
 }
