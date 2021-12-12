@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 19:26:27 by rponsonn          #+#    #+#             */
-/*   Updated: 2021/12/12 19:26:29 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 20:19:38 by vrigaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	hash(const char *str)
 {
-	int	i;
-	int	char_position;
-	int	value;
+	int					i;
+	int					char_position;
+	unsigned long int	value;
 
 	value = 0;
 	i = 0;
