@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 16:09:30 by vrigaudy          #+#    #+#             */
-/*   Updated: 2021/12/12 12:30:44 by rponsonn         ###   ########.fr       */
+/*   Updated: 2021/12/12 12:33:33 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	*ft_process(int *flag)
 	int		ret;
 	char	*ptr;
 
-	ret = get_next_line(0, &ptr, 0);
+	ret = get_next_line(STDIN_FILENO, &ptr, 0);
 	if (ret == -1)
 	{
 		*flag = -1;
