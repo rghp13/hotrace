@@ -13,7 +13,7 @@ SRC_NAME					=	main.c gnl.c utils.c utils2.c hash.c ft_parse.c search.c free.c f
 
 NAME						=	hotrace
 OBJ_NAME					=	$(SRC_NAME:.c=.o)
-CC							=	gcc
+CC							=	cc
 RM							=	rm -f
 CFLAG						=	-Wall -Wextra -Werror
 SRC							=	$(addprefix $(PATH_SRC)/,$(SRC_NAME))
